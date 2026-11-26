@@ -671,3 +671,19 @@ body.locked main#story { visibility: hidden; }
   .page #game-ch:has(.mem-grid.six) .mem-head { margin: 0; flex-direction: column; align-items: flex-start; }
   .page #game-ch:has(.mem-grid.six) > .q-react:empty { display: none; }
 }
+
+/* chapter locks and hints */
+.pager-top { max-width: calc(100vw - 24px); }
+.pager-hint { display: block; max-width: min(460px, calc(100vw - 52px)); text-align: center; font-size: .78rem; line-height: 1.3; color: var(--ink); letter-spacing: .01em; }
+.pager-hint .pager-label { font-size: .66rem; letter-spacing: .12em; color: var(--gold); margin-right: 4px; }
+.pager-hint.done { color: var(--gold); }
+.pager-hint b { display: inline-block; padding: 0 6px; border-radius: 999px; background: var(--gold); color: var(--bg); line-height: 1.35; }
+.pager-hint.bump { animation: hintbump .5s ease; }
+@keyframes hintbump { 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
+.pager-top .dot.locked { opacity: .28; border-style: dashed; cursor: not-allowed; }
+.pg-btn.next.locked { background: rgba(42, 14, 24, .78); color: var(--gold); opacity: .75; }
+.pg-btn.next.locked .pg-next-label { opacity: .7; }
+.pg-btn.next.nudge { animation: nudge 1.8s ease-in-out .6s infinite; box-shadow: 0 0 0 0 rgba(233, 194, 125, .6), var(--shadow); }
+@media (max-width: 560px) { .pager-hint { font-size: .72rem; } }
+.pager-hint { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pager-top { left: 0; right: 0; transform: none; margin: 0 auto; width: fit-content; }
