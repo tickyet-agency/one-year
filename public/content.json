@@ -1,0 +1,319 @@
+{
+  "her": "Samrin",
+  "him": "Sathya",
+  "startDate": "2025-11-27T16:42:00",
+  "tagline": "365 days of us, across every kilometre",
+  "meetDate": "",
+  "question": "What do I call you when you're sleepy?",
+  "answers": [
+    "Naa Bangaaram",
+    "Bangaaram"
+  ],
+  "wrongReplies": [
+    "Nope, try again, my love",
+    "So close… (not really)",
+    "Think sleepier…",
+    "Hint: it shines like gold"
+  ],
+  "showDemoHint": false,
+  "stats": [
+    {
+      "n": "LIVE_DAYS",
+      "label": "days together"
+    },
+    {
+      "n": "9000",
+      "label": "km between Andhra and Australia"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "17 March 2025",
+      "title": "The First Message",
+      "text": "Okka Message Tho Naa Life loki happiness vachindhi",
+      "scene": "chat",
+      "caption": "where it started",
+      "back": "Nannu Vethukuntu Vachinandhuku Thank You So Much",
+      "photo": "/media/memory-1.webp"
+    },
+    {
+      "date": "27 Nov 2025",
+      "title": "Propose Day",
+      "text": "Chaala days confusion tarwatha she said \"NACHYAVU\" ani",
+      "scene": "chat",
+      "caption": "finally",
+      "back": "Ippudu kooda guitars moguthunaayi hehehe",
+      "photo": "/media/memory-3.webp"
+    },
+    {
+      "date": "5 Dec 2025",
+      "title": "Our First Art",
+      "text": "",
+      "scene": "stars",
+      "caption": "Beautiful!",
+      "back": "Geesindhi Heart Ayina...Chudataniki Idharam Hug Cheskunattu Undhi Kadha",
+      "photo": "/media/memory-5.webp"
+    },
+    {
+      "date": "01 Jan 2026",
+      "title": "Commitment Day",
+      "text": "Propose aipoyaka kooda one month suspense lo petyav nannu",
+      "scene": "movie",
+      "caption": "3… 2… 1… play",
+      "back": "Chaala cute anipinchindhi, First and last longest message from your side",
+      "photo": "/media/memory-4.webp"
+    },
+    {
+      "date": "27 Jul 2026",
+      "title": "Our Longest voice call",
+      "text": "By Mistake Cut aindhi lekapothey 10hrs undedhi kadha?",
+      "scene": "call",
+      "caption": "8:17:52",
+      "back": "Saripodhu, Inka ekkuva sepu maatlaadali neetho",
+      "photo": "/media/memory-2.webp"
+    }
+  ],
+  "letters": [
+    {
+      "when": "you miss me",
+      "body": "Nenekkadiki Velthaanu Nanna Ninnu Vadhili, Em alochinchaku over ga think cheyakunda just oka call cheseyi, I'm always available to you"
+    },
+    {
+      "when": "you're sad",
+      "body": "Dhaa....Dhaaa...\nNaa bangaaram kadhaa...\nEppudu Sad ga Feel avvakoodadhu\nHappy ga undaali"
+    },
+    {
+      "when": "you can't sleep",
+      "body": "Joo Joo Jo\nJo Nanna Jo\nJoo Joo Jo\nJo Sammy Jo\nJoo Joo Jo\nJo Kanna Jo\nJoo Joo Jo\nJo Kuchamma Jo"
+    },
+    {
+      "when": "we've had a fight",
+      "body": "Alagaku Nanna Dhaa,\nSorry Kadha Naa Bujji Kadha,\nManalo Manaki Enti Cheppu\nI Love You So Muchhhhhhhh\nEe Godavalu anni temporary\nOur Relationship is Permanent!!!!"
+    },
+    {
+      "when": "the distance feels too much",
+      "body": "Nenentha dhooram lo unna\nNaa heart eppudu neethoney undidhi\nEe dhooram kontha kaalamey\nVery soon idharam kalisi permanent ga deggaraga untaam"
+    },
+    {
+      "when": "you doubt yourself",
+      "body": "Pichi dhaanaaa!!!\nYou are capable of doing wonders never ever doubt yourself,\nNammu...You can do this!!!\nEmanna aithey nenu unnaga!!!!!"
+    }
+  ],
+  "reasons": [
+    "The way you narrate your day like it's a movie I'm starring in.",
+    "You save the best part of your day to tell me last.",
+    "You pick up on my mood from a single emoji.",
+    "Your little \"reached home?\" check every single night.",
+    "You make ordinary Tuesdays feel like something to look forward to.",
+    "The way your eyes light up when you talk about your dreams.",
+    "You never make me compete with your phone, because I am the phone.",
+    "You laugh at my jokes even when the network ruins the punchline.",
+    "You send me photos of the sky so we can share the same view.",
+    "You remember the names of all my friends, even the ones you've never seen.",
+    "You fall asleep mid-sentence and still say goodnight in the morning.",
+    "You make me feel chosen, not just loved.",
+    "The way you defend me when I'm not around.",
+    "You turn our time-zone math into a game.",
+    "You always ask how I am, and actually wait for the answer.",
+    "You hum when you think nobody is listening. I'm always listening.",
+    "You made a screen feel warmer than most rooms.",
+    "You never once made me doubt us.",
+    "Your handwriting in the photos of notes you send me.",
+    "You know exactly when I need space and exactly when I don't.",
+    "You make me braver about the things I'm scared of.",
+    "Your goofy faces on video calls when the camera freezes.",
+    "You treat my small wins like headline news.",
+    "You say sorry first, even when it wasn't all your fault.",
+    "You make me believe distance is just a number on a map.",
+    "Your excitement over food is honestly adorable.",
+    "You keep every promise, even the tiny ones.",
+    "You taught me what it feels like to be understood.",
+    "You make silence on a call feel comfortable, not empty.",
+    "Your random \"I miss you\" in the middle of the afternoon.",
+    "You're the most beautiful person I've never stood next to. Yet.",
+    "You make me laugh on days I didn't think I could.",
+    "You're gentle with my heart and fierce about my happiness.",
+    "Your curiosity about everything, especially about me.",
+    "You make our future sound so real I can almost touch it.",
+    "You light up when someone you love does well.",
+    "You are my favourite person to do nothing with.",
+    "You never let a fight end without \"I love you\".",
+    "The way you say \"okay, last five minutes\" and stay for an hour.",
+    "You make me feel safe from hundreds of kilometres away.",
+    "You remember every one of our little anniversaries.",
+    "You're strong, and soft, and somehow both at once.",
+    "You notice when I change my profile picture within minutes.",
+    "You make me want to build a whole life, not just a relationship.",
+    "Your love feels steady, like a light that never flickers.",
+    "You turned \"someday\" into a plan.",
+    "You make me proud to call you mine.",
+    "Every conversation with you feels like coming home.",
+    "You made me fall in love without ever holding my hand.",
+    "Because one year with you already feels like forever, and I want more."
+  ],
+  "places": [
+    {
+      "name": "The First Message",
+      "date": "Mar 2025",
+      "x": 14,
+      "y": 40,
+      "memory": "Okka Message out of where naa lokam loki happiness teeskoni vachindhi"
+    },
+    {
+      "name": "The Closeness",
+      "date": "Sep 2025",
+      "x": 30,
+      "y": 20,
+      "memory": "Matalu March lo start ayina Manushulu deggara avvataaniki aidhu nelala time pattindhi"
+    },
+    {
+      "name": "The Special Week",
+      "date": "Oct 2025",
+      "x": 50,
+      "y": 44,
+      "memory": "Aa week antha naathoney unnav melkoni melkoni fever kooda vachesindhi bangaaraniki"
+    },
+    {
+      "name": "The Love Bug",
+      "date": "Nov 2025",
+      "x": 66,
+      "y": 14,
+      "memory": "\"Nuvvu dhooramaithey nenu thattukolenu so nuvvu ippudey dhooram avvu but nuvvu ippudu dhooramaina thattukolenu\" woww oka vaaram juttu pikkunna ardam avvaka....."
+    },
+    {
+      "name": "The Final Confession",
+      "date": "Nov 2025",
+      "x": 84,
+      "y": 36,
+      "memory": "Finally Oka Roju Mellaga Think Chesi She Said \"Nachyavu\" ani"
+    }
+  ],
+  "someday": "Every star on that map was us through a screen. The next one is going to be us in the same place, holding on and not letting go.",
+  "coupons": [
+    {
+      "title": "One 10-hour call",
+      "note": "No hanging up first. You pick the topic."
+    },
+    {
+      "title": "Movie night, your pick",
+      "note": "Zero complaints from me. Even if it's a k-drama."
+    },
+    {
+      "title": "A real letter",
+      "note": "Handwritten and posted to your address."
+    },
+    {
+      "title": "Surprise delivery",
+      "note": "Your favourite food at your door, on any bad day."
+    },
+    {
+      "title": "One “you were right”",
+      "note": "Redeemable in any argument. No questions asked."
+    },
+    {
+      "title": "The first hug",
+      "note": "Unlimited duration. Valid the second we meet."
+    }
+  ],
+  "cake": {
+    "text": "Happy 1 Year",
+    "wish": "Now close your eyes and make a wish. I already know mine. It's you.",
+    "cut": "The first slice is yours. Consider it fed to you, all the way from 9000 km away."
+  },
+  "quiz": [
+    {
+      "q": "Nenu neeku pettina first nick name ento cheppu?",
+      "options": [
+        "Kuchulu",
+        "Bangaaram",
+        "Bakka Laddu",
+        "Nannalu"
+      ],
+      "correct": [
+        2
+      ],
+      "yay": "Istam ga pettukunna....Naa Bakka Laddu",
+      "nope": "Oye!! Bakkodaaa.... Bakka Laddu Ra adhi"
+    },
+    {
+      "q": "Manam maatladukunna first call eppudu?",
+      "options": [
+        "31/12/2025",
+        "02/01/2026",
+        "30/12/2025",
+        "01/01/2026"
+      ],
+      "correct": [
+        3
+      ],
+      "yay": "New Year Night Special",
+      "nope": "New Year Roju Nanna!!!"
+    },
+    {
+      "q": "Nenu neeku send chesina first song ento cheppu?",
+      "options": [
+        "Tu Hai To",
+        "Finding Her",
+        "Kadali Ala Laaga",
+        "Yedhemaina Sakhi"
+      ],
+      "correct": [
+        1
+      ],
+      "yay": "Every. Single. Time.",
+      "nope": "It's Finding Her Every single time."
+    },
+    {
+      "q": "Neelo naaku em istamo cheppuko chudham",
+      "options": [
+        "Eyes",
+        "Nose",
+        "Smile",
+        "All of the above"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "yay": "Nuvvu motham istam nanna",
+      "nope": ""
+    },
+    {
+      "q": "Mana Relation Ship lo best day edho cheppu",
+      "options": [
+        "27/11/2025",
+        "17/03/2025",
+        "01/01/2026",
+        "All of the above"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "yay": "Correct!!!!Naa opinion lo neetho unna every second best eh nanna",
+      "nope": "Naa opinion lo neetho unna every second best eh nanna"
+    }
+  ],
+  "finaleTitle": "My Sammy,",
+  "finaleLetter": "March 17 2025 Mundhu Nee Existence Kooda Naaku antha teliyakapovachu but ippudu naa life antha nuvvey unnav, Sathya ante\"The Sammy Pichodu\" anattu aipoindhi, Naa every decision, every step, everything, everything I do it's for you, Naaku telusu neeku kuncham bhayam ani but let me tell you this , Praanam Poina Ekkadiki Vellanu, NUVVEY KAAVALI NEETHONEY UNTAANU, YOU ARE MY EVERYTHING, kallu muskunna nuvvey untaav, kallu therichina nuvvey untaav, melukuvalonu nuvvey, nidralonu nuvvey, naa prathi thought lonu nuvvey, naa prathi step neekosamey, nannu neekantey ekkuvaga evvaru preminchaleru, neekantey manchiga evvaru chuskoleru, nannu neelaga evvaru bharinchaleru, Naku Nuvvu parinchayam ayyedhaaka teleedhu sammy oka person ni nenu intha ekkuvaga love chesthaanu ani, oka person kosam every second thapana padathaanu ani, oka person kosam all my time , all my energy motham petti premisthaanu ani, nee deggara nundi ela preminchalo nerchukunnanu, ela happy ga undaalo nerchukunaanu, YOU ARE THE BEST, So jeevithantham ilaaney kalisi melisi undipodham. Maa aavida chaala GREAT!!!!!!! THANKS FOR MAKING ME THE LUCKIEST PERSON , Naa Sreemathini Baaga Jaagrathaga Chusko Sarenaa, NAA BANGAARAM!!!!!!!!!!!!!!!",
+  "signature": "Itlu ninnu praanam laaga preminchey mee srivaaru, Sathya",
+  "surpriseTitle": "Year two starts now.",
+  "surpriseLine": "Ila 100 Years, 1000 Years kalisi Undham!!!!!! Infinite Years aithey Best emo",
+  "secretMessage": "Secret unlocked: I still get butterflies when your name pops up.",
+  "proposal": {
+    "enabled": true,
+    "lead": "I've been keeping something for this exact moment.",
+    "question": "Will you marry me?",
+    "note": "A year of loving you through a screen was enough to know. I want every year after this one too.",
+    "yes": "Yes",
+    "yes2": "A thousand times yes",
+    "saidYesTitle": "She said yes.",
+    "saidYesLine": "Then it's settled. The day we finally meet, this ring goes on your finger for real."
+  },
+  "song": "",
+  "editorPasscodeHash": "f0ad4737b4bb07bc69f3b291c8fa5585e8e00a93bde04dd8f774b5f2440071c6"
+}

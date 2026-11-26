@@ -1,6 +1,6 @@
 import { content } from "../content";
 import { meetLine, useNow } from "../lib/time";
-import { Divider } from "../components/Decor";
+import { Divider, HiddenRose } from "../components/Decor";
 
 /** The one light, blush-coloured chapter: the day they finally meet. */
 export function Someday() {
@@ -16,6 +16,7 @@ export function Someday() {
           <p className="lede">{content.someday}</p>
         </div>
       </div>
+      <HiddenRose index={8} style={{ bottom: 10, right: "4%" }} />
     </section>
   );
 }

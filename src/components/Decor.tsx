@@ -13,7 +13,7 @@ export function Divider({ index }: { index: number }) {
   );
 }
 
-/** One of the eight tiny roses hidden around the page. Tapping it earns a rose. */
+/** One of the nine tiny roses hidden around the page. Tapping it earns a rose. */
 export function HiddenRose({ index, style }: { index: number; style: CSSProperties }) {
   const { has, earn, countOf } = useGarden();
   const id = "h:" + index;

@@ -138,7 +138,7 @@ export function GardenTracker() {
       {open && (
         <div id="garden-panel" ref={panel}>
           <h3>Your rose garden</h3>
-          <p>Collect roses as you explore. Eight of them are hidden around the page, so look closely.</p>
+          <p>Collect roses as you explore. Nine of them are hidden around the page, so look closely.</p>
           <div>
             {GARDEN_ROWS.map(([label, prefix, total]) => {
               const n = Math.min(countOf(prefix), total);
