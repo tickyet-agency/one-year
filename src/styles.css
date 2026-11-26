@@ -604,26 +604,9 @@ body.locked main#story { visibility: hidden; }
 .page .stat { padding: clamp(6px, calc(var(--vh) * 1.6), 18px) 12px; }
 .page .since, .page .meet, .page .invite { margin: 0; }
 
-/* memories carousel */
-.t-carousel { display: grid; gap: clamp(10px, calc(var(--vh) * 2), 20px); justify-items: center; }
-.t-item.one { grid-template-columns: auto minmax(0, 1fr); gap: clamp(20px, 5vw, 56px); padding: 0; width: 100%; max-width: 820px; animation: tin .55s cubic-bezier(.2, .8, .2, 1) both; }
-.t-item.one::after { display: none; }
-.t-item.one .t-text { text-align: left; }
-.t-item.one .polaroid { order: 0; width: clamp(150px, calc((var(--vh) * 100 - 470px) * .78), 300px); }
-@keyframes tin { from { opacity: 0; transform: translateX(28px); } }
-.t-nav { display: flex; align-items: center; gap: 14px; }
-.t-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--gold); background: transparent; color: var(--gold); font-size: 1.6rem; line-height: 1; display: grid; place-items: center; padding: 0 0 3px; }
-.t-arrow:disabled { opacity: .3; cursor: default; }
-.t-dots { display: flex; gap: 8px; }
-.t-dot { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 0; background: var(--accent-soft); position: relative; }
-.t-dot::after { content: ""; position: absolute; inset: -9px -4px; }
-.t-dot.on { background: var(--accent); width: 20px; border-radius: 999px; }
-@media (max-width: 720px) {
-  .t-item.one { grid-template-columns: 1fr; justify-items: center; gap: 12px; }
-  .t-item.one .t-text { text-align: center; }
-  .t-item.one .t-text h3 { font-size: 1.5rem; }
-  .t-item.one .polaroid { width: clamp(150px, calc((var(--vh) * 100 - 560px) * .78), 280px); }
-}
+/* memories: the one chapter that scrolls down; it starts at the top, not centred */
+.page:has(#timeline-ch) .page-inner { align-content: start; }
+.page .timeline .polaroid { width: min(280px, 100%); }
 
 /* star map: sky and its card side by side when there's room */
 @media (min-width: 820px) {
