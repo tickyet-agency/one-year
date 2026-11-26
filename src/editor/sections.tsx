@@ -344,12 +344,11 @@ export function Proposal({ draft: { content: c }, set }: Props) {
     fn(d.proposal);
   });
   return (
-    <Section id="proposal" title="Proposal" intro="After the bouquet she taps a velvet box open, a platinum ring rises out, and the question appears.">
+    <Section id="proposal" title="Proposal" intro="After the bouquet a velvet box opens by itself as she scrolls to it, a platinum ring rises out, and the question appears.">
       <Toggle label="Show the proposal at the end" checked={p.enabled} onChange={(v) => edit((x) => { x.enabled = v; })}
         hint="Turn this off if your friend wants to save the question for another day." />
       {p.enabled && <>
         <Text label="Line above the box" value={p.lead} onChange={(v) => edit((x) => { x.lead = v; })} />
-        <Text label="Hint under the box" value={p.tapHint} onChange={(v) => edit((x) => { x.tapHint = v; })} placeholder="Open it" />
         <Text label="The question" value={p.question} onChange={(v) => edit((x) => { x.question = v; })}
           hint={`Her name (${c.her || "her name"}) is shown just above it.`} placeholder="Will you marry me?" />
         <Text label="A few words under the question" value={p.note} onChange={(v) => edit((x) => { x.note = v; })} multiline rows={3} />

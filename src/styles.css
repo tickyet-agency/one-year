@@ -469,12 +469,8 @@ img { max-width: 100%; }
 /* the proposal: a velvet box, a platinum ring, one question */
 .proposal { display: grid; justify-items: center; gap: 14px; padding: clamp(48px, 9vw, 96px) 0 24px; text-align: center; }
 .pr-lead { margin: 0; font-family: var(--hand); font-style: italic; font-size: clamp(1.5rem, 4.4vw, 2rem); max-width: 30ch; }
-.pr-hint { margin: 0; font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); animation: prhint 2.4s ease-in-out infinite; }
-@keyframes prhint { 50% { opacity: .45; } }
 
-.ringbox { position: relative; width: 220px; height: 280px; padding: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-.ringbox.open { cursor: default; }
-.ringbox:focus-visible { outline: 2px solid var(--gold); outline-offset: 8px; border-radius: 18px; }
+.ringbox { position: relative; width: 220px; height: 280px; }
 .ringbox > span { position: absolute; left: 50%; display: block; }
 .ringbox svg { display: block; width: 100%; height: auto; overflow: visible; }
 .rb-base { bottom: 0; width: 220px; margin-left: -110px; z-index: 3; filter: drop-shadow(0 22px 24px rgba(0, 0, 0, .55)); }

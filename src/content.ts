@@ -155,11 +155,10 @@ export const defaultContent = {
   /** Tip: time a flower or cake delivery to her door for when she reaches this line. */
   surpriseLine: "Now go check your door. Something from me just arrived.",
   secretMessage: "Secret unlocked: I still get butterflies when your name pops up.",
-  /** The proposal after the bouquet: a ring box she opens, a platinum ring, and the question. */
+  /** The proposal after the bouquet: a ring box that opens when she scrolls to it, a platinum ring, and the question. */
   proposal: {
     enabled: true,
     lead: "I've been keeping something for this exact moment.",
-    tapHint: "Open it",
     question: "Will you marry me?",
     note: "A year of loving you through a screen was enough to know. I want every year after this one too.",
     yes: "Yes",

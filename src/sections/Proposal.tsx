@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { content, runtime } from "../content";
 import { burst, petalBurst } from "../lib/effects";
 import { prefersReducedMotion } from "../lib/random";
@@ -10,27 +10,49 @@ function readYes(): number | null {
   try { const v = Number(localStorage.getItem(STORE)); return v > 0 ? v : null; } catch { return null; }
 }
 
-/** A velvet box she taps open, a platinum ring, and one question. */
+/** A velvet box that opens by itself when she scrolls to it, a platinum ring, and one question. */
 export function Proposal() {
   const p = content.proposal;
   const saved = readYes();
   const [stage, setStage] = useState<"closed" | "open" | "asked" | "yes">(saved ? "yes" : "closed");
   const [yesAt, setYesAt] = useState<number | null>(saved);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const askRef = useRef<HTMLDivElement>(null);
+  const still = prefersReducedMotion();
+
+  // Stay closed until the box is properly on screen, give her a beat, then open it.
+  useEffect(() => {
+    const box = boxRef.current;
+    if (stage !== "closed" || !box) return;
+    let timer = 0;
+    const io = new IntersectionObserver(([e]) => {
+      window.clearTimeout(timer);
+      if (!e.isIntersecting) return;
+      timer = window.setTimeout(() => {
+        io.disconnect();
+        setStage("open");
+        const r = box.getBoundingClientRect();
+        window.setTimeout(() => burst(r.left + r.width / 2, r.top + r.height * 0.35, 14), still ? 0 : 900);
+      }, still ? 0 : 900);
+    }, { threshold: 0.75 });
+    io.observe(box);
+    return () => { io.disconnect(); window.clearTimeout(timer); };
+  }, [stage, still]);
 
   useEffect(() => {
     if (stage !== "open") return;
-    const t = window.setTimeout(() => setStage("asked"), prefersReducedMotion() ? 0 : 1900);
+    const t = window.setTimeout(() => setStage("asked"), still ? 0 : 1900);
     return () => window.clearTimeout(t);
-  }, [stage]);
+  }, [stage, still]);
+
+  // Bring the question into view once it appears.
+  useEffect(() => {
+    if (stage !== "asked") return;
+    const t = window.setTimeout(() => askRef.current?.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "center" }), 250);
+    return () => window.clearTimeout(t);
+  }, [stage, still]);
 
   if (!p?.enabled) return null;
-
-  const open = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (stage !== "closed") return;
-    setStage("open");
-    const r = e.currentTarget.getBoundingClientRect();
-    window.setTimeout(() => burst(r.left + r.width / 2, r.top + r.height * 0.35, 14), prefersReducedMotion() ? 0 : 900);
-  };
 
   const sayYes = () => {
     const now = Date.now();
@@ -39,9 +61,10 @@ export function Proposal() {
     if (!runtime.preview) { try { localStorage.setItem(STORE, String(now)); } catch { /* private mode */ } }
     burst(innerWidth / 2, innerHeight / 2, 48);
     petalBurst(innerWidth / 2, innerHeight * 0.15, 160);
-    if (!prefersReducedMotion()) {
-      [400, 900, 1500, 2200].forEach((ms, i) => window.setTimeout(() =>
-        burst(innerWidth * (i % 2 ? 0.75 : 0.25), innerHeight * (0.3 + 0.1 * i), 26), ms));
+    if (!still) {
+      [350, 800, 1250, 1700, 2200, 2700, 3300, 4000].forEach((ms, i) => window.setTimeout(() =>
+        burst(innerWidth * [0.2, 0.8, 0.35, 0.65, 0.5, 0.15, 0.85, 0.5][i], innerHeight * (0.25 + 0.07 * (i % 4)), 26), ms));
+      [1200, 2600].forEach((ms) => window.setTimeout(() => petalBurst(innerWidth / 2, innerHeight * 0.1, 110), ms));
     }
   };
 
@@ -53,25 +76,23 @@ export function Proposal() {
       <span className="eyebrow">One more thing</span>
       {stage !== "yes" && <p className="pr-lead">{p.lead}</p>}
 
-      <button type="button" className={`ringbox${isOpen ? " open" : ""}`} onClick={open}
-        aria-label={isOpen ? "An open ring box with a platinum diamond ring" : "A little velvet box. Tap to open it"}
-        aria-disabled={isOpen}>
+      <div ref={boxRef} role="img" className={`ringbox${isOpen ? " open" : ""}`}
+        aria-label={isOpen ? "An open ring box with a platinum diamond ring" : "A little closed velvet box"}>
         <span className="rb-glow" aria-hidden="true" />
         <span className="rb-lid in" aria-hidden="true"><Lid face="in" /></span>
         <span className="rb-ring" aria-hidden="true"><Ring /></span>
         <span className="rb-lid out" aria-hidden="true"><Lid face="out" /></span>
         <span className="rb-base" aria-hidden="true"><Base /></span>
         <span className="rb-sparkles" aria-hidden="true">{[0, 1, 2, 3, 4].map((i) => <i key={i} />)}</span>
-      </button>
-      {stage === "closed" && <p className="pr-hint">{p.tapHint}</p>}
+      </div>
 
-      {(stage === "asked") && (
-        <div className="pr-ask" aria-live="polite">
+      {stage === "asked" && (
+        <div ref={askRef} className="pr-ask" aria-live="polite">
           <p className="pr-name">{content.her},</p>
           <h2 className="pr-q">{p.question}</h2>
           {p.note && <p className="pr-note">{p.note}</p>}
           <div className="pr-btns">
-            <button className="btn" type="button" autoFocus onClick={sayYes}>{p.yes}</button>
+            <button className="btn" type="button" onClick={sayYes}>{p.yes}</button>
             {p.yes2.trim() && <button className="btn ghost" type="button" onClick={sayYes}>{p.yes2}</button>}
           </div>
         </div>
