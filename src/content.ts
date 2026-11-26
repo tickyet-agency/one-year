@@ -170,7 +170,7 @@ export const defaultContent = {
   song: ""
 };
 
-export const HIDDEN_ROSES = 7;
+export const HIDDEN_ROSES = 8;
 
 export type AppContent = typeof defaultContent & {
   /** SHA-256 of the editor passcode (set from the editor; never the passcode itself). */

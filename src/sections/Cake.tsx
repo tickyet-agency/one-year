@@ -3,7 +3,7 @@ import { content } from "../content";
 import { burst, petalBurst } from "../lib/effects";
 import { useGarden } from "../lib/garden";
 import { f1, seeded } from "../lib/random";
-import { Balloons, Divider } from "../components/Decor";
+import { Balloons, Divider, HiddenRose } from "../components/Decor";
 import { Leaves, RoseGroup, type Tone } from "../components/Rose";
 
 const CX = 160;
@@ -283,6 +283,7 @@ export function Cake() {
         {phase === "done" && <button className="btn ghost" type="button" onClick={again}>Light the candles again</button>}
       </div>
       <p className="q-react" id="cake-msg" aria-live="polite">{msg}</p>
+      <HiddenRose index={7} style={{ bottom: 8, left: "6%" }} />
     </section>
   );
 }
