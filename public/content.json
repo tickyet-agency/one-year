@@ -315,5 +315,13 @@
     "saidYesLine": "Then it's settled. The day we finally meet, this ring goes on your finger for real."
   },
   "song": "/media/song.mp3",
-  "editorPasscodeHash": "f0ad4737b4bb07bc69f3b291c8fa5585e8e00a93bde04dd8f774b5f2440071c6"
+  "editorPasscodeHash": "f0ad4737b4bb07bc69f3b291c8fa5585e8e00a93bde04dd8f774b5f2440071c6",
+  "favourites": [
+    "/media/fav-1.webp",
+    "/media/fav-2.webp",
+    "/media/fav-3.webp",
+    "/media/fav-4.webp",
+    "/media/fav-5.webp",
+    "/media/fav-6.webp"
+  ]
 }

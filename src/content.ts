@@ -134,6 +134,9 @@ export const defaultContent = {
     { title: "The first hug", note: "Unlimited duration. Valid the second we meet." }
   ] as Coupon[],
 
+  /** Photos for the favourites game (flowers, foods, couples...). Empty = the drawn pairs. 6 photos make a 6×6 grid. */
+  favourites: [] as string[],
+
   cake: {
     text: "Happy 1 Year",
     wish: "Now close your eyes and make a wish. I already know mine. It's you.",

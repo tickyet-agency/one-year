@@ -54,7 +54,7 @@ export default function App() {
     ["Fortunes", <Reasons />],
     ["Star map", <StarMap />],
     ["Someday", <Someday />],
-    ["Pairs", <PairsGame />],
+    ["Favourites", <PairsGame />],
     ["Coupons", <Coupons />],
     ["Cake", <Cake />],
     ["Quiz", <Quiz onFinish={openFinale} />],

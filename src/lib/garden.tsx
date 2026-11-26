@@ -12,7 +12,7 @@ export const GARDEN_ROWS: [label: string, prefix: string, total: number][] = [
   ["Letters opened", "l", content.letters.length],
   ["Fortunes read (1 per 10)", "r", Math.floor(content.reasons.length / 10)],
   ["Stars visited", "p", content.places.length],
-  ["Pairs game won", "game", 1],
+  ["Favourites game won", "game", 1],
   ["Coupons scratched", "c", content.coupons.length],
   ["Candles blown out", "candles", 1],
   ["Cake cut", "cake", 1],
