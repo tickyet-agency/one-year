@@ -4,6 +4,7 @@ import { burst, petalBurst } from "../lib/effects";
 import { TOTAL_ROSES, useGarden } from "../lib/garden";
 import { prefersReducedMotion } from "../lib/random";
 import { Balloons, Divider } from "../components/Decor";
+import { Proposal } from "./Proposal";
 
 /** Sealed until the quiz is done; then the letter types itself out and the bouquet arrives. */
 export function Finale({ opened }: { opened: boolean }) {
@@ -68,6 +69,7 @@ export function Finale({ opened }: { opened: boolean }) {
               </p>
             </div>
           )}
+          {showSurprise && <Proposal />}
         </div>
       )}
     </section>

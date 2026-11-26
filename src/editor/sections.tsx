@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import type { QuizQuestion, Scene } from "../content";
+import { defaultContent, type QuizQuestion, type Scene } from "../content";
 import { SCENE_NAMES, Scene as SceneArt } from "../components/Scene";
 import { blobUrl, shrinkImage, type Draft, type DraftContent, type DraftMemory } from "./draft";
 import { DateTime, ListEditor, NumberField, Section, Select, StringList, Text, Toggle } from "./fields";
@@ -10,7 +10,7 @@ interface Props { draft: Draft; set: SetContent }
 export const SECTIONS = [
   ["basics", "The basics"], ["lock", "Lock screen"], ["stats", "Numbers"], ["timeline", "Memories"],
   ["letters", "Open-when letters"], ["reasons", "50 reasons"], ["places", "Star map"], ["someday", "Meeting day"],
-  ["coupons", "Love coupons"], ["cake", "Cake"], ["quiz", "Quiz"], ["finale", "Last page"], ["music", "Music"]
+  ["coupons", "Love coupons"], ["cake", "Cake"], ["quiz", "Quiz"], ["finale", "Last page"], ["proposal", "Proposal"], ["music", "Music"]
 ] as const;
 
 const SCENE_LABELS: Record<Scene, string> = {
@@ -331,6 +331,36 @@ export function Finale({ draft: { content: c }, set }: Props) {
           hint="Tip: time a real delivery to her door for this moment." />
       </div>
       <Text label="Secret message (tap the & five times)" value={c.secretMessage} onChange={(v) => set((d) => { d.secretMessage = v; })} />
+    </Section>
+  );
+}
+
+type ProposalText = typeof defaultContent.proposal;
+
+export function Proposal({ draft: { content: c }, set }: Props) {
+  const p: ProposalText = c.proposal ?? defaultContent.proposal;
+  const edit = (fn: (p: ProposalText) => void) => set((d) => {
+    if (!d.proposal) d.proposal = JSON.parse(JSON.stringify(defaultContent.proposal));
+    fn(d.proposal);
+  });
+  return (
+    <Section id="proposal" title="Proposal" intro="After the bouquet she taps a velvet box open, a platinum ring rises out, and the question appears.">
+      <Toggle label="Show the proposal at the end" checked={p.enabled} onChange={(v) => edit((x) => { x.enabled = v; })}
+        hint="Turn this off if your friend wants to save the question for another day." />
+      {p.enabled && <>
+        <Text label="Line above the box" value={p.lead} onChange={(v) => edit((x) => { x.lead = v; })} />
+        <Text label="Hint under the box" value={p.tapHint} onChange={(v) => edit((x) => { x.tapHint = v; })} placeholder="Open it" />
+        <Text label="The question" value={p.question} onChange={(v) => edit((x) => { x.question = v; })}
+          hint={`Her name (${c.her || "her name"}) is shown just above it.`} placeholder="Will you marry me?" />
+        <Text label="A few words under the question" value={p.note} onChange={(v) => edit((x) => { x.note = v; })} multiline rows={3} />
+        <div className="ed-grid2">
+          <Text label="First answer button" value={p.yes} onChange={(v) => edit((x) => { x.yes = v; })} placeholder="Yes" />
+          <Text label="Second answer button" value={p.yes2} onChange={(v) => edit((x) => { x.yes2 = v; })}
+            hint="Both buttons mean yes. Leave this empty for a single button." />
+        </div>
+        <Text label="Big line after she says yes" value={p.saidYesTitle} onChange={(v) => edit((x) => { x.saidYesTitle = v; })} />
+        <Text label="Message after she says yes" value={p.saidYesLine} onChange={(v) => edit((x) => { x.saidYesLine = v; })} multiline rows={3} />
+      </>}
     </Section>
   );
 }

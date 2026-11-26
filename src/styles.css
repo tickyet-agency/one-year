@@ -465,3 +465,69 @@ html { overflow-x: clip; }
 img { max-width: 100%; }
 #root { min-height: 100%; }
 #garden-panel > div:not(.g-prize) { display: grid; gap: 6px; }
+
+/* the proposal: a velvet box, a platinum ring, one question */
+.proposal { display: grid; justify-items: center; gap: 14px; padding: clamp(48px, 9vw, 96px) 0 24px; text-align: center; }
+.pr-lead { margin: 0; font-family: var(--hand); font-style: italic; font-size: clamp(1.5rem, 4.4vw, 2rem); max-width: 30ch; }
+.pr-hint { margin: 0; font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); animation: prhint 2.4s ease-in-out infinite; }
+@keyframes prhint { 50% { opacity: .45; } }
+
+.ringbox { position: relative; width: 220px; height: 280px; padding: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.ringbox.open { cursor: default; }
+.ringbox:focus-visible { outline: 2px solid var(--gold); outline-offset: 8px; border-radius: 18px; }
+.ringbox > span { position: absolute; left: 50%; display: block; }
+.ringbox svg { display: block; width: 100%; height: auto; overflow: visible; }
+.rb-base { bottom: 0; width: 220px; margin-left: -110px; z-index: 3; filter: drop-shadow(0 22px 24px rgba(0, 0, 0, .55)); }
+.rb-lid { bottom: 117px; width: 220px; margin-left: -110px; transform-origin: 50% 100%; }
+.rb-lid.out { z-index: 4; transition: transform .45s cubic-bezier(.6, 0, .8, .4); }
+.rb-lid.in { z-index: 1; transform: scaleY(0); transition: transform .5s cubic-bezier(.2, .7, .3, 1) .45s; }
+.ringbox:not(.open) { animation: boxbob 3.2s ease-in-out infinite; }
+@keyframes boxbob { 50% { transform: translateY(-6px) rotate(-1.5deg); } }
+.ringbox.open .rb-lid.out { transform: scaleY(0); }
+.ringbox.open .rb-lid.in { transform: scaleY(1); }
+
+.rb-ring { bottom: 96px; width: 118px; margin-left: -59px; z-index: 2; opacity: 0; transform: translateY(46px) scale(.7);
+  transition: opacity .6s ease .85s, transform 1.1s cubic-bezier(.2, .9, .25, 1.2) .85s; filter: drop-shadow(0 0 10px rgba(220, 235, 255, .45)); }
+.ringbox.open .rb-ring { opacity: 1; transform: translateY(-6px) scale(1); }
+.ringbox.open .rb-ring svg { animation: ringfloat 4s ease-in-out 2s infinite; }
+@keyframes ringfloat { 50% { transform: translateY(-6px) rotate(2deg); } }
+.dia-glint { opacity: 0; }
+.ringbox.open .dia-glint { animation: glint 2.6s ease-in-out 2s infinite; }
+@keyframes glint { 0%, 70%, 100% { opacity: 0; } 80% { opacity: 1; } }
+
+.rb-glow { bottom: 90px; width: 300px; height: 300px; margin-left: -150px; z-index: 0; border-radius: 50%; opacity: 0; transform: scale(.4);
+  background: radial-gradient(circle, rgba(236, 244, 255, .55), rgba(233, 194, 125, .22) 38%, transparent 68%); transition: opacity 1s ease 1s, transform 1.4s ease 1s; pointer-events: none; }
+.ringbox.open .rb-glow { opacity: 1; transform: scale(1); animation: glowpulse 3.6s ease-in-out 2.4s infinite; }
+@keyframes glowpulse { 50% { opacity: .65; transform: scale(.92); } }
+
+.rb-sparkles { inset: 0; left: 0 !important; z-index: 5; pointer-events: none; }
+.rb-sparkles i { position: absolute; width: 14px; height: 14px; opacity: 0; background: #fff;
+  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); }
+.rb-sparkles i:nth-child(1) { left: 22%; top: 10%; }
+.rb-sparkles i:nth-child(2) { left: 74%; top: 4%; width: 10px; height: 10px; }
+.rb-sparkles i:nth-child(3) { left: 82%; top: 30%; }
+.rb-sparkles i:nth-child(4) { left: 12%; top: 34%; width: 9px; height: 9px; }
+.rb-sparkles i:nth-child(5) { left: 56%; top: -2%; width: 11px; height: 11px; }
+.ringbox.open .rb-sparkles i { animation: twinkle 2.2s ease-in-out infinite; }
+.ringbox.open .rb-sparkles i:nth-child(1) { animation-delay: 1.8s; }
+.ringbox.open .rb-sparkles i:nth-child(2) { animation-delay: 2.3s; }
+.ringbox.open .rb-sparkles i:nth-child(3) { animation-delay: 2.9s; }
+.ringbox.open .rb-sparkles i:nth-child(4) { animation-delay: 3.4s; }
+.ringbox.open .rb-sparkles i:nth-child(5) { animation-delay: 2.0s; }
+@keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.3) rotate(0); } 50% { opacity: 1; transform: scale(1) rotate(45deg); } }
+
+.pr-ask, .pr-yes { display: grid; justify-items: center; gap: 10px; animation: prin 1.1s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes prin { from { opacity: 0; transform: translateY(24px); } }
+.pr-name { margin: 0; font-family: var(--script); font-size: clamp(2.2rem, 7vw, 3rem); color: var(--gold); line-height: 1; }
+.pr-q { margin: 0; font-size: clamp(2.6rem, 9vw, 4.4rem); font-style: italic; line-height: 1.05; color: var(--ink);
+  text-shadow: 0 0 28px rgba(240, 122, 152, .45); }
+.pr-note { margin: 4px 0 0; max-width: 36ch; color: var(--muted); font-family: var(--hand); font-style: italic; font-size: 1.3rem; }
+.pr-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 10px; }
+.pr-btns .btn { min-width: 9.5rem; }
+.pr-yes h2 { margin: 0; font-family: var(--script); font-weight: 400; font-size: clamp(3.2rem, 12vw, 5.6rem); color: var(--gold); line-height: 1.1;
+  text-shadow: 0 0 30px rgba(233, 194, 125, .45); }
+.pr-yes p { margin: 0; max-width: 34ch; font-family: var(--hand); font-style: italic; font-size: clamp(1.4rem, 4vw, 1.8rem); }
+.pr-date { margin-top: 6px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.stage-yes .rb-ring svg { filter: drop-shadow(0 0 16px rgba(255, 255, 255, .7)); }
+.rb-cushion { opacity: 0; transition: opacity .3s ease .4s; }
+.ringbox.open .rb-cushion { opacity: 1; }

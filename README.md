@@ -66,7 +66,7 @@ Open the link, then:
 | `src/content.ts` | Default words and dates (overridden by `public/content.json`) |
 | `src/editor/` | The story editor at `/edit`: passcode, form, live preview, pack download |
 | `src/App.tsx` | Page order and the lock → story flow |
-| `src/sections/` | One component per chapter (lock, timeline, letters, reasons, star map, someday, pairs game, coupons, cake, quiz, finale) |
+| `src/sections/` | One component per chapter (lock, timeline, letters, reasons, star map, someday, pairs game, coupons, cake, quiz, finale, proposal) |
 | `src/components/` | Shared pieces: drawn roses, scenes, balloons, petals, hearts, rose counter, music button |
 | `src/lib/` | Rose collecting (saved in her browser), effects, music, time helpers |
 | `public/images/` | Rose, bouquets, couple, blossom and 3D heart pictures |

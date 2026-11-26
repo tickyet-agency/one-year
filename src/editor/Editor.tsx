@@ -216,6 +216,7 @@ export default function Editor() {
           <S.Cake draft={draft} set={set} />
           <S.Quiz draft={draft} set={set} />
           <S.Finale draft={draft} set={set} />
+          <S.Proposal draft={draft} set={set} />
           <S.Music draft={draft} setSong={setSong} />
 
           <section className="ed-section" aria-labelledby="ed-files-h">
