@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useRef, useState, type ReactNode } from "react";
-import { content, HIDDEN_ROSES } from "../content";
+import { content, HIDDEN_ROSES, runtime } from "../content";
 import { burst, petalBurst } from "./effects";
 
 /*
@@ -21,11 +21,13 @@ export const GARDEN_ROWS: [label: string, prefix: string, total: number][] = [
 ];
 export const TOTAL_ROSES = GARDEN_ROWS.reduce((n, r) => n + r[2], 0);
 
-const STORE_KEY = "our-roses-v1";
+// The editor's preview keeps its own progress so testing never touches the real one.
+const storeKey = () => (runtime.preview ? "our-roses-preview" : "our-roses-v1");
 const load = (): Set<string> => {
-  try { return new Set(JSON.parse(localStorage.getItem(STORE_KEY) || "[]") as string[]); } catch { return new Set(); }
+  if (runtime.preview) return new Set();
+  try { return new Set(JSON.parse(localStorage.getItem(storeKey()) || "[]") as string[]); } catch { return new Set(); }
 };
-const save = (s: Set<string>) => { try { localStorage.setItem(STORE_KEY, JSON.stringify([...s])); } catch { /* private mode: progress just isn't kept */ } };
+const save = (s: Set<string>) => { try { localStorage.setItem(storeKey(), JSON.stringify([...s])); } catch { /* private mode: progress just isn't kept */ } };
 
 interface GardenApi {
   earned: Set<string>;

@@ -1,6 +1,9 @@
 /* =====================================================================
-   EDIT EVERYTHING HERE — names, dates, memories, letters, quiz, cake.
-   Nothing else in the project needs to change for a personal version.
+   The story's words, dates and settings.
+
+   The easy way to change them: open /edit on the site (the editor), fill in the
+   form, download the pack and commit it. That writes public/content.json, which
+   overrides these defaults. You can also edit the defaults below directly.
    ===================================================================== */
 
 export type Scene = "chat" | "call" | "video" | "movie" | "cake" | "parcel" | "stars" | "sunrise";
@@ -12,7 +15,7 @@ export interface QuizQuestion { q: string; options: string[]; correct: number[];
 export interface Coupon { title: string; note: string }
 export interface Stat { n: string | "LIVE_DAYS"; label: string }
 
-export const content = {
+export const defaultContent = {
   her: "Meera",
   him: "Arjun",
   /** The moment it all started (local time). */
@@ -157,3 +160,21 @@ export const content = {
 };
 
 export const HIDDEN_ROSES = 7;
+
+export type AppContent = typeof defaultContent & {
+  /** SHA-256 of the editor passcode (set from the editor; never the passcode itself). */
+  editorPasscodeHash?: string;
+};
+
+/**
+ * The live content the app reads. It starts as the defaults and is overwritten by
+ * public/content.json (or by the editor's preview) before the app first renders.
+ */
+export const content: AppContent = JSON.parse(JSON.stringify(defaultContent));
+
+export function applyContent(data: Partial<AppContent> | null | undefined) {
+  if (data && typeof data === "object") Object.assign(content, data);
+}
+
+/** Set when the app runs inside the editor's preview frame. */
+export const runtime = { preview: false };

@@ -1,0 +1,6 @@
+{
+  "rewrites": [{ "source": "/edit", "destination": "/index.html" }],
+  "headers": [
+    { "source": "/content.json", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+  ]
+}

@@ -26,7 +26,9 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,webp,png,svg,woff2}"]
+        // content.json and uploaded media are precached too, so her installed app works offline
+        globPatterns: ["**/*.{js,css,html,webp,png,svg,woff2,json,mp3}"],
+        maximumFileSizeToCacheInBytes: 12 * 1024 * 1024
       }
     })
   ]
