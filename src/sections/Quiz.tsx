@@ -42,7 +42,7 @@ export function Quiz({ onFinish }: { onFinish: () => void }) {
         <div className="q-progress">{bars}</div>
         <div className="q-title">{q.q}</div>
         <div className="q-opts">
-          {q.options.map((o, i) => (
+          {q.options.map((o, i) => !o.trim() ? null : (
             <button key={i} type="button" disabled={answered}
               className={`q-opt${answered && q.correct.includes(i) ? " right" : ""}${answered && i === pick && !q.correct.includes(i) ? " wrong" : ""}`}
               onClick={(e) => {

@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import type { Scene } from "../content";
+import type { QuizQuestion, Scene } from "../content";
 import { SCENE_NAMES, Scene as SceneArt } from "../components/Scene";
 import { blobUrl, shrinkImage, type Draft, type DraftContent, type DraftMemory } from "./draft";
 import { DateTime, ListEditor, NumberField, Section, Select, StringList, Text, Toggle } from "./fields";
@@ -225,36 +225,96 @@ export function Cake({ draft: { content: c }, set }: Props) {
   );
 }
 
-export function Quiz({ draft: { content: c }, set }: Props) {
+const MAX_OPTIONS = 8;
+const QUESTION_IDEAS = [
+  "Where did we first talk?",
+  "What's my nickname for you?",
+  "Which song always reminds me of you?",
+  "What did we talk about on our first call?",
+  "What's my favourite thing about you?",
+  "Where is the first place we'll go together?",
+  "What do I always say before we hang up?"
+];
+
+/** Options editor for one quiz question: any number of answers (2–8), any of them marked right. */
+function QuizOptions({ q, up }: { q: QuizQuestion; up: (p: Partial<QuizQuestion>) => void }) {
+  const setOption = (k: number, v: string) => up({ options: q.options.map((x, j) => (j === k ? v : x)) });
+  const toggleRight = (k: number) => up({ correct: q.correct.includes(k) ? q.correct.filter((x) => x !== k) : [...q.correct, k].sort((a, b) => a - b) });
+  const remove = (k: number) => up({
+    options: q.options.filter((_, j) => j !== k),
+    correct: q.correct.filter((x) => x !== k).map((x) => (x > k ? x - 1 : x))
+  });
+  const move = (k: number, d: number) => {
+    const j = k + d;
+    if (j < 0 || j >= q.options.length) return;
+    const options = [...q.options];
+    [options[k], options[j]] = [options[j], options[k]];
+    const swap = (x: number) => (x === k ? j : x === j ? k : x);
+    up({ options, correct: q.correct.map(swap).sort((a, b) => a - b) });
+  };
+  const filled = q.options.filter((o) => o.trim()).length;
+  const blankRight = q.correct.some((k) => !q.options[k]?.trim());
+
   return (
-    <Section id="quiz" title="Quiz" intro="Finishing the quiz opens the last page. Tick every answer that counts as right.">
-      <ListEditor items={c.quiz} onChange={(v) => set((d) => { d.quiz = v; })} min={1} max={10}
-        addLabel="Add a question" itemTitle={(q) => q.q}
-        make={() => ({ q: "", options: ["", "", "", ""], correct: [0], yay: "", nope: "" })}
+    <fieldset className="ed-field ed-strings">
+      <legend>Answer options ({q.options.length} of up to {MAX_OPTIONS})</legend>
+      <p className="ed-hint">Write as many options as you like and mark every one that counts as right. She sees them as buttons.</p>
+      {q.options.map((o, k) => {
+        const right = q.correct.includes(k);
+        return (
+          <div className={`ed-option${right ? " right" : ""}`} key={k}>
+            <input type="text" aria-label={`Answer option ${k + 1}`} value={o} placeholder={`Answer option ${k + 1}`}
+              onChange={(e) => setOption(k, e.target.value)} />
+            <button type="button" className="ed-pill" aria-pressed={right} onClick={() => toggleRight(k)}>
+              {right ? "✓ Right answer" : "Mark as right"}
+            </button>
+            <div className="ed-option-tools">
+              <button type="button" className="ed-icon" aria-label={`Move option ${k + 1} up`} disabled={k === 0} onClick={() => move(k, -1)}>↑</button>
+              <button type="button" className="ed-icon" aria-label={`Move option ${k + 1} down`} disabled={k === q.options.length - 1} onClick={() => move(k, 1)}>↓</button>
+              <button type="button" className="ed-icon danger" aria-label={`Remove option ${k + 1}`} disabled={q.options.length <= 2} onClick={() => remove(k)}>✕</button>
+            </div>
+          </div>
+        );
+      })}
+      <div className="ed-row wrap">
+        {q.options.length < MAX_OPTIONS && <button type="button" className="ed-btn ghost small" onClick={() => up({ options: [...q.options, ""] })}>+ Add another option</button>}
+        <button type="button" className="ed-btn ghost small" onClick={() => up({ correct: q.options.map((_, k) => k) })}>Every option is right</button>
+      </div>
+      {filled < 2 && <p className="ed-error">Fill in at least two options.</p>}
+      {q.correct.length === 0 && <p className="ed-error">Mark at least one option as the right answer.</p>}
+      {blankRight && <p className="ed-error">A right answer is empty. Fill it in or unmark it.</p>}
+    </fieldset>
+  );
+}
+
+export function Quiz({ draft: { content: c }, set }: Props) {
+  const [idea, setIdea] = useState("");
+  const blank = (question = ""): QuizQuestion => ({ q: question, options: ["", ""], correct: [], yay: "", nope: "" });
+  return (
+    <Section id="quiz" title="Quiz" intro="Write your own questions and answer options. Finishing the quiz opens the last page, and she can't fail it.">
+      <ListEditor items={c.quiz} onChange={(v) => set((d) => { d.quiz = v; })} min={1} max={15}
+        addLabel="Write your own question" itemTitle={(q) => q.q} make={() => blank()}
         render={(q, up) => (
           <>
-            <Text label="Question" value={q.q} onChange={(v) => up({ q: v })} />
-            <fieldset className="ed-field ed-strings">
-              <legend>Answers</legend>
-              {q.options.map((o, k) => (
-                <div className="ed-row" key={k}>
-                  <input type="checkbox" aria-label={`Answer ${k + 1} is right`} checked={q.correct.includes(k)}
-                    onChange={(e) => up({ correct: e.target.checked ? [...q.correct, k].sort() : q.correct.filter((x) => x !== k) })} />
-                  <input type="text" aria-label={`Answer ${k + 1}`} value={o}
-                    onChange={(e) => up({ options: q.options.map((x, j) => (j === k ? e.target.value : x)) })} />
-                  <button type="button" className="ed-icon danger" aria-label={`Remove answer ${k + 1}`} disabled={q.options.length <= 2}
-                    onClick={() => up({ options: q.options.filter((_, j) => j !== k), correct: q.correct.filter((x) => x !== k).map((x) => (x > k ? x - 1 : x)) })}>✕</button>
-                </div>
-              ))}
-              {q.options.length < 4 && <button type="button" className="ed-btn ghost small" onClick={() => up({ options: [...q.options, ""] })}>+ Add answer</button>}
-              {q.correct.length === 0 && <p className="ed-error">Tick at least one right answer.</p>}
-            </fieldset>
+            <Text label="Your question" value={q.q} onChange={(v) => up({ q: v })} placeholder="e.g. What's my nickname for you?" />
+            <QuizOptions q={q} up={up} />
             <div className="ed-grid2">
-              <Text label="When she's right" value={q.yay} onChange={(yay) => up({ yay })} />
-              <Text label="When she's wrong" value={q.nope} onChange={(nope) => up({ nope })} />
+              <Text label="Reply when she picks a right answer" value={q.yay} onChange={(yay) => up({ yay })} placeholder="Correct! You know me too well." />
+              <Text label="Reply when she picks a wrong one" value={q.nope} onChange={(nope) => up({ nope })} placeholder="Close! It was…" hint="Leave empty if every option is right." />
             </div>
           </>
         )} />
+      <div className="ed-idea">
+        <label htmlFor="ed-quiz-idea">Need an idea? Start a new question from one of these</label>
+        <div className="ed-row wrap">
+          <select id="ed-quiz-idea" value={idea} onChange={(e) => setIdea(e.target.value)}>
+            <option value="">Pick a question idea…</option>
+            {QUESTION_IDEAS.map((s) => <option key={s} value={s}>{s}</option>)}
+          </select>
+          <button type="button" className="ed-btn small" disabled={!idea || c.quiz.length >= 15}
+            onClick={() => { set((d) => { d.quiz.push(blank(idea)); }); setIdea(""); }}>Add this question</button>
+        </div>
+      </div>
     </Section>
   );
 }
