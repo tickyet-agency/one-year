@@ -42,6 +42,17 @@ function musicBox() {
   loop = window.setInterval(playBar, 1920);
 }
 
+/** Start downloading the song (silently) so it can begin the instant she unlocks. */
+export function prepareMusic() {
+  if (!content.song || audio) return;
+  try {
+    audio = new Audio();
+    audio.preload = "auto";
+    audio.src = content.song;
+    audio.load();
+  } catch { audio = null; }
+}
+
 /** Must be called from a tap or click (browsers only allow sound after the viewer interacts). */
 export function startMusic() {
   try {

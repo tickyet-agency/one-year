@@ -1,5 +1,6 @@
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { content } from "../content";
+import { prepareMusic } from "../lib/music";
 
 /** "Only you can open this." She answers a private question to get in. */
 export function LockScreen({ onUnlock, gone }: { onUnlock: () => void; gone: boolean }) {
@@ -7,6 +8,9 @@ export function LockScreen({ onUnlock, gone }: { onUnlock: () => void; gone: boo
   const [msg, setMsg] = useState("");
   const [shake, setShake] = useState(0);
   const wrong = useRef(0);
+
+  // The song downloads quietly while she types, so it starts the moment the answer is right.
+  useEffect(() => { prepareMusic(); }, []);
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
