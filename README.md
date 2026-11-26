@@ -11,7 +11,7 @@ Open **`/edit`** on the site (for example `https://your-site.vercel.app/edit`, o
 
 1. **First visit:** set an editor passcode. Only a scrambled code (SHA-256) is stored, never the passcode itself.
 2. **Fill in the form:** names, start date, lock question and answers, memories (with photo
-   uploads), letters, the 50 reasons, star map (tap the sky to place stars), meeting day,
+   uploads), letters, the love fortunes jar, star map (tap the sky to place stars), meeting day,
    coupons, cake text, quiz, the final letter and the song (mp3, up to 10 MB).
 3. **Watch the live preview:** the phone on the right (the Preview button on smaller screens) shows the real app with your changes.
 4. **Check the list at the top:** it turns green ("Ready to send") once the sample names are
@@ -66,7 +66,7 @@ Open the link, then:
 | `src/content.ts` | Default words and dates (overridden by `public/content.json`) |
 | `src/editor/` | The story editor at `/edit`: passcode, form, live preview, pack download |
 | `src/App.tsx` | Page order and the lock → story flow |
-| `src/sections/` | One component per chapter (lock, timeline, letters, reasons, star map, someday, pairs game, coupons, cake, quiz, finale, proposal) |
+| `src/sections/` | One component per chapter (lock, timeline, letters, fortune jar, star map, someday, pairs game, coupons, cake, quiz, finale, proposal) |
 | `src/components/` | Shared pieces: drawn roses, scenes, balloons, petals, hearts, rose counter, music button |
 | `src/lib/` | Rose collecting (saved in her browser), effects, music, time helpers |
 | `public/images/` | Rose, bouquets, couple, blossom and 3D heart pictures |

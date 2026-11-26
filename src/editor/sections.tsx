@@ -9,7 +9,7 @@ interface Props { draft: Draft; set: SetContent }
 
 export const SECTIONS = [
   ["basics", "The basics"], ["lock", "Lock screen"], ["stats", "Numbers"], ["timeline", "Memories"],
-  ["letters", "Open-when letters"], ["reasons", "50 reasons"], ["places", "Star map"], ["someday", "Meeting day"],
+  ["letters", "Open-when letters"], ["reasons", "Love fortunes"], ["places", "Star map"], ["someday", "Meeting day"],
   ["coupons", "Love coupons"], ["cake", "Cake"], ["quiz", "Quiz"], ["finale", "Last page"], ["proposal", "Proposal"], ["music", "Music"]
 ] as const;
 
@@ -135,13 +135,13 @@ export function Reasons({ draft: { content: c }, set }: Props) {
   const id = useId();
   const n = c.reasons.length;
   return (
-    <Section id="reasons" title="50 reasons" intro="One reason per line. She pulls them from the jar one at a time; every 10 earns a rose.">
+    <Section id="reasons" title="Love fortunes" intro="One fortune per line. She pulls them from the jar one at a time; every 10 earns a rose.">
       <div className="ed-field">
-        <label htmlFor={id}>Reasons ({n})</label>
+        <label htmlFor={id}>Fortunes ({n})</label>
         <textarea id={id} rows={14} value={c.reasons.join("\n")}
           onChange={(e) => set((d) => { d.reasons = e.target.value.split("\n"); })}
           onBlur={() => set((d) => { d.reasons = d.reasons.map((r) => r.trim()).filter(Boolean); })} />
-        <p className={n < 10 ? "ed-error" : "ed-hint"}>{n < 10 ? "Add at least 10 reasons." : `${n} reasons, worth ${Math.floor(n / 10)} roses.`}</p>
+        <p className={n < 10 ? "ed-error" : "ed-hint"}>{n < 10 ? "Add at least 10 fortunes." : `${n} fortunes, worth ${Math.floor(n / 10)} roses.`}</p>
       </div>
     </Section>
   );

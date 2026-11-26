@@ -51,7 +51,7 @@ export default function App() {
     ["Us", <Hero />],
     ["Memories", <Timeline />],
     ["Letters", <Letters />],
-    ["Reasons", <Reasons />],
+    ["Fortunes", <Reasons />],
     ["Star map", <StarMap />],
     ["Someday", <Someday />],
     ["Pairs", <PairsGame />],

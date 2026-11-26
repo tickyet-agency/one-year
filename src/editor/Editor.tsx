@@ -60,7 +60,7 @@ function checks(d: Draft): Check[] {
     { ok: c.her !== SAMPLE.her && c.him !== SAMPLE.him && !!c.her.trim() && !!c.him.trim(), text: "Real names instead of the sample ones", section: "basics" },
     { ok: !!c.startDate && !isNaN(start.getTime()), text: "Start date is set", section: "basics" },
     { ok: c.answers.some((a) => a.trim()), text: "At least one lock-screen answer", section: "lock" },
-    { ok: c.reasons.filter((r) => r.trim()).length >= 10, text: "At least 10 reasons", section: "reasons" },
+    { ok: c.reasons.filter((r) => r.trim()).length >= 10, text: "At least 10 love fortunes", section: "reasons" },
     {
       ok: c.quiz.every((q) => q.q.trim() && q.options.filter((o) => o.trim()).length >= 2 && q.correct.length > 0 && q.correct.every((k) => q.options[k]?.trim())),
       text: "Every quiz question has a question, at least two options and a right answer", section: "quiz"
